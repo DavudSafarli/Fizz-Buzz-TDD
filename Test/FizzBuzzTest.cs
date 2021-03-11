@@ -6,13 +6,12 @@ namespace Test
 {
     public class UnitTest1
     {
-        [Fact]
-        public void TestFizzBuzz()
+        [Theory]
+        [InlineData(5, "1.2.Fizz.4.Buzz.")]
+        [InlineData(16, "1.2.Fizz.4.Buzz.Fizz.7.8.Fizz.Buzz.11.Fizz.13.14.FizzBuzz.16.")]
+        public void TestFizzBuzz(int input, string expected)
         {
             var app = new FizzBuzz.FizzBuzz();
-
-            int input = 5;
-            string expected = "1\n2\nFizz\n4\nBuzz\n";
 
             InMemWriter inmemReadWriter = new InMemWriter();
             app.PrintFizzBuzz(input, inmemReadWriter);
@@ -26,7 +25,7 @@ namespace Test
         private string mem { get; set; } = "";
         public void WriteLine(string value)
         {
-            this.mem +=  $"{value}\n";
+            this.mem +=  $"{value}.";
         }
 
         public string Read() {
