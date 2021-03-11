@@ -13,14 +13,14 @@ namespace Test
         {
             var app = new FizzBuzz.FizzBuzz();
 
-            InMemWriter inmemReadWriter = new InMemWriter();
+            InMemReadWriter inmemReadWriter = new InMemReadWriter();
             app.PrintFizzBuzz(input, inmemReadWriter);
 
             Assert.Equal(expected, inmemReadWriter.Read());
         }
     }
 
-    public class InMemWriter : Writer
+    public class InMemReadWriter : Writer
     {
         private string mem { get; set; } = "";
         public void WriteLine(string value)
